@@ -11,7 +11,6 @@ class BannerWidget extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(24),
         gradient: LinearGradient(
-          // B897F2
           colors: [AppColors.gradientStart, AppColors.gradientEnd],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
@@ -23,8 +22,14 @@ class BannerWidget extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('30% Off'),
-              Text('For your first month subscription'),
+              Text(
+                '30% Off',
+                style: TextStyle(fontSize: 24, color: Colors.white),
+              ),
+              Text(
+                'For your first month subscription',
+                style: TextStyle(color: Colors.white),
+              ),
             ],
           ),
           ElevatedButton(onPressed: () {}, child: Text('Get Started')),

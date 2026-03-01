@@ -9,8 +9,6 @@ class DashboardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
       body: SafeArea(
@@ -42,15 +40,29 @@ class DashboardScreen extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text('Welcome Back!'),
-                              Text('Hello, John!'),
+                              Text(
+                                'Hello, John!',
+                                style: TextStyle(fontSize: 20),
+                              ),
                             ],
                           ),
                         ],
                       ),
                     ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: Icon(Icons.notifications_outlined),
+                    SizedBox(
+                      width: 48,
+                      height: 48,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.white,
+                          shape: CircleBorder(),
+                          foregroundColor: Colors.black,
+                          padding: EdgeInsets.zero,
+                          shadowColor: Colors.transparent,
+                        ),
+                        onPressed: () {},
+                        child: Icon(Icons.notifications_outlined),
+                      ),
                     ),
                   ],
                 ),
@@ -77,7 +89,10 @@ class DashboardScreen extends StatelessWidget {
               // Browse Categories
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: Text('Browse By Category'),
+                child: Text(
+                  'Browse By Category',
+                  style: TextStyle(fontSize: 20),
+                ),
               ),
               SizedBox(
                 height: 40,
@@ -87,15 +102,15 @@ class DashboardScreen extends StatelessWidget {
                   children: [
                     const SizedBox(width: 16),
                     ChipWidget(label: 'See All', selected: true),
-                    const SizedBox(width: 16),
+                    const SizedBox(width: 8),
                     ChipWidget(label: 'Full Time'),
-                    const SizedBox(width: 16),
+                    const SizedBox(width: 8),
                     ChipWidget(label: 'Part Time'),
-                    const SizedBox(width: 16),
+                    const SizedBox(width: 8),
                     ChipWidget(label: 'Contract'),
-                    const SizedBox(width: 16),
+                    const SizedBox(width: 8),
                     ChipWidget(label: 'Freelance'),
-                    const SizedBox(width: 16),
+                    const SizedBox(width: 8),
                   ],
                 ),
               ),
@@ -106,24 +121,28 @@ class DashboardScreen extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Recommended'),
+                    Text('Recommended', style: TextStyle(fontSize: 20)),
                     TextButton(onPressed: () {}, child: Text('See All')),
                   ],
                 ),
               ),
               SizedBox(
                 height: 220,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: [
-                      RecommendationWidget(
-                        logoUrl:
-                            'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/250px-Google_%22G%22_logo.svg.png',
-                      ),
-                    ],
-                  ),
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    const SizedBox(width: 16),
+                    RecommendationWidget(
+                      logoUrl:
+                          'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/250px-Google_%22G%22_logo.svg.png',
+                    ),
+                    const SizedBox(width: 16),
+                    RecommendationWidget(
+                      logoUrl:
+                          'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/250px-Google_%22G%22_logo.svg.png',
+                    ),
+                    const SizedBox(width: 16),
+                  ],
                 ),
               ),
 
@@ -133,57 +152,31 @@ class DashboardScreen extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Saved'),
+                    Text('Saved', style: TextStyle(fontSize: 20)),
                     TextButton(onPressed: () {}, child: Text('See All')),
                   ],
                 ),
               ),
               SizedBox(
                 height: 220,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: [
-                      RecommendationWidget(
-                        logoUrl:
-                            'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/250px-Google_%22G%22_logo.svg.png',
-                      ),
-                    ],
-                  ),
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    const SizedBox(width: 16),
+                    RecommendationWidget(
+                      logoUrl:
+                          'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/250px-Google_%22G%22_logo.svg.png',
+                    ),
+                    const SizedBox(width: 16),
+                  ],
                 ),
               ),
 
-              // Padding(
-              //   padding: const EdgeInsets.all(16.0),
-              //   child: SizedBox(
-              //     width: screenWidth,
-              //     child: ElevatedButton(
-              //       onPressed: () {},
-              //       style: ElevatedButton.styleFrom(
-              //         backgroundColor: AppColors.buttonPrimary,
-              //         shape: RoundedRectangleBorder(
-              //           borderRadius: BorderRadius.circular(24),
-              //         ),
-              //         elevation: 2,
-              //       ),
-              //       child: Text(
-              //         "I'm feeling lucky",
-              //         style: TextStyle(color: Colors.white),
-              //       ),
-              //     ),
-              //   ),
-              // ),
+              SizedBox(height: 16),
             ],
           ),
         ),
       ),
-      // bottomNavigationBar: SafeArea(
-      //   child: Padding(
-      //     padding: const EdgeInsets.all(16.0),
-      //     child: ElevatedButton(onPressed: () {}, child: Text('Search Jobs')),
-      //   ),
-      // ),
     );
   }
 

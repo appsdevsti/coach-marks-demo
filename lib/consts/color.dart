@@ -14,11 +14,15 @@ class AppColors {
   // static const Color buttonSecondary = Color(0xFFFF9500);
   
   // Border colors
-  static const Color border = Color.fromARGB(255, 205, 193, 241);
+  static const Color border = Color(0xFFCDC1F1);
 
   // Gradient colors
   static const Color gradientStart = Color(0xffD0B7F8);
   static const Color gradientEnd = Color(0xff9AA6F5);
+
+  // Secondary gradient colors
+  static const Color secondaryGradientStart = Color(0xffE0C8FF);
+  static const Color secondaryGradientEnd = Color(0xffB3C5FF);
   
   // // Status colors
   // static const Color error = Color(0xFFFF3B30);

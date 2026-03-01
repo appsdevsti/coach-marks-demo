@@ -4,7 +4,8 @@ import 'package:coach_marks/consts/color.dart';
 class ChipWidget extends StatelessWidget {
   final bool selected;
   final String label;
-  const ChipWidget({super.key, this.selected = false, required this.label});
+  final Color? color;
+  const ChipWidget({super.key, this.selected = false, required this.label, this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,7 @@ class ChipWidget extends StatelessWidget {
       ),
       child: Text(
         label,
-        style: TextStyle(color: selected ? Colors.white : AppColors.textPrimary),
+        style: TextStyle(color: selected ? Colors.white : color ?? AppColors.textPrimary),
       ),
     );
   }
