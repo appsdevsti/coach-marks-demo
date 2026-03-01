@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:coach_marks/consts/color.dart';
 
 class BannerWidget extends StatelessWidget {
-  const BannerWidget({super.key});
+  final GlobalKey globalKey;
+  const BannerWidget({super.key, required this.globalKey});
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +33,11 @@ class BannerWidget extends StatelessWidget {
               ),
             ],
           ),
-          ElevatedButton(onPressed: () {}, child: Text('Get Started')),
+          ElevatedButton(
+            key: globalKey,
+            onPressed: () {},
+            child: Text('Get Started'),
+          ),
         ],
       ),
     );

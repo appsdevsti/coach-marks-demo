@@ -1,11 +1,32 @@
+import 'dart:developer';
+
 import 'package:coach_marks/consts/color.dart';
 import 'package:coach_marks/screen/widget/banner.dart';
 import 'package:coach_marks/screen/widget/chip.dart';
 import 'package:coach_marks/screen/widget/recommendation.dart';
 import 'package:flutter/material.dart';
+import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 
-class DashboardScreen extends StatelessWidget {
+class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
+
+  @override
+  State<DashboardScreen> createState() => _DashboardScreenState();
+}
+
+class _DashboardScreenState extends State<DashboardScreen> {
+  final GlobalKey _notificationKey = GlobalKey();
+  final GlobalKey _dealsKey = GlobalKey();
+  final GlobalKey _recommendedKey = GlobalKey();
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Future.delayed(const Duration(seconds: 1), () {
+    _showCoachMarks();
+    // });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +53,7 @@ class DashboardScreen extends StatelessWidget {
                             radius: 30,
                             backgroundColor: Colors.blue,
                             foregroundImage: NetworkImage(
-                              'https://i.pravatar.cc/150?img=13',
+                              'https://i.pravatar.cc/250?img=13',
                             ),
                           ),
                           const SizedBox(width: 16),
@@ -53,6 +74,7 @@ class DashboardScreen extends StatelessWidget {
                       width: 48,
                       height: 48,
                       child: ElevatedButton(
+                        key: _notificationKey,
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white,
                           shape: CircleBorder(),
@@ -83,7 +105,7 @@ class DashboardScreen extends StatelessWidget {
               // Banner
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: BannerWidget(),
+                child: BannerWidget(globalKey: _dealsKey),
               ),
 
               // Browse Categories
@@ -133,6 +155,7 @@ class DashboardScreen extends StatelessWidget {
                   children: [
                     const SizedBox(width: 16),
                     RecommendationWidget(
+                      key: _recommendedKey,
                       logoUrl:
                           'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/250px-Google_%22G%22_logo.svg.png',
                     ),
@@ -178,6 +201,71 @@ class DashboardScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<void> _showCoachMarks() async {
+    // TODO: Implement coach marks logic here
+    log('Showing coach marks...');
+    final targets = [
+      TargetFocus(
+        identify: 'notificationButton',
+        keyTarget: _notificationKey,
+        alignSkip: Alignment.topCenter,
+        contents: [
+          TargetContent(
+            align: ContentAlign.bottom,
+            builder: (context, controller) => Text(
+              'This is the notification button',
+              style: Theme.of(
+                context,
+              ).textTheme.titleLarge?.copyWith(color: Colors.white),
+            ),
+          ),
+        ],
+      ),
+
+      TargetFocus(
+        identify: 'dealsButton',
+        keyTarget: _dealsKey,
+        alignSkip: Alignment.topCenter,
+        contents: [
+          TargetContent(
+            align: ContentAlign.bottom,
+            builder: (context, controller) => Text(
+              'This is the deals button',
+              style: Theme.of(
+                context,
+              ).textTheme.titleLarge?.copyWith(color: Colors.white),
+            ),
+          ),
+        ],
+      ),
+
+      TargetFocus(
+        identify: 'recommendationButton',
+        keyTarget: _recommendedKey,
+        alignSkip: Alignment.topCenter,
+        contents: [
+          TargetContent(
+            align: ContentAlign.bottom,
+            builder: (context, controller) => Text(
+              'This is the recommendation button',
+              style: Theme.of(
+                context,
+              ).textTheme.titleLarge?.copyWith(color: Colors.white),
+            ),
+          ),
+        ],
+      ),
+    ];
+
+    final tutorial = TutorialCoachMark(targets: targets);
+
+    // Future.delayed(const Duration(milliseconds: 500), () {
+      if (mounted) {
+        tutorial.show(context: context);
+      }
+    // });
   }
 
   InputDecoration _inputDecoration({required String hint, IconData? icon}) {
