@@ -2,7 +2,7 @@
 
 A simple Flutter exploration project demonstrating the `tutorial_coach_mark` package implementation.
 
-![Coach Marks Demo](assets/demo.gif)
+![Coach Marks Demo](gif/coach_mark.gif)
 
 ## 🎯 Purpose
 
