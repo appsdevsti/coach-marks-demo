@@ -1,6 +1,7 @@
 import 'package:coach_marks/screen/dashboard_screen.dart';
 import 'package:flutter/material.dart';
 
+// percobaan ci
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
